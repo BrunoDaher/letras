@@ -1,0 +1,72 @@
+
+ @keyframes fa-blink {
+     0% { opacity: 1; }
+     50% { opacity: 0.5; }
+     100% { opacity: 0; }
+ }
+
+ 
+.metro2s {
+   -webkit-animation: fa-blink 2s linear infinite;
+   -moz-animation: fa-blink 2s linear infinite;
+   -ms-animation: fa-blink 2s linear infinite;
+   -o-animation: fa-blink 2s linear infinite;
+   animation: fa-blink 2s linear infinite;
+}
+
+
+.metro44 {
+   -webkit-animation: fa-blink 1s linear infinite;
+   -moz-animation: fa-blink 1s linear infinite;
+   -ms-animation: fa-blink 1s linear infinite;
+   -o-animation: fa-blink 1s linear infinite;
+   animation: fa-blink 1s linear infinite;
+}
+
+.metro34 {
+   -webkit-animation: fa-blink .75s linear infinite;
+   -moz-animation: fa-blink .75s linear infinite;
+   -ms-animation: fa-blink .75s linear infinite;
+   -o-animation: fa-blink .75s linear infinite;
+   animation: fa-blink .75s linear infinite;
+}
+.metro24 {
+   -webkit-animation: fa-blink .50s linear infinite;
+   -moz-animation: fa-blink .50s linear infinite;
+   -ms-animation: fa-blink .50s linear infinite;
+   -o-animation: fa-blink .50s linear infinite;
+   animation: fa-blink .50s linear infinite;
+}
+.metro14 {
+   -webkit-animation: fa-blink .25s linear infinite;
+   -moz-animation: fa-blink .25s linear infinite;
+   -ms-animation: fa-blink .25s linear infinite;
+   -o-animation: fa-blink .25s linear infinite;
+   animation: fa-blink .25s linear infinite;
+}
+
+
+
+.word {
+  position: relative;
+  white-space: nowrap;
+  color: lightblue;
+  text-shadow: 0 0 3px rgba(0,0,0,1); 
+}
+
+.word::after {
+  content: attr(data-text);
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: red;
+  overflow: hidden;
+  width: 40%;
+  animation: run-text 47s infinite linear;
+  text-shadow: 0 0 3px rgba(255,255,255,1); 
+}
+
+@keyframes run-text {
+  from { width: 0 }
+  to { width: 100% }
+}

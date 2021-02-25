@@ -1,0 +1,106 @@
+<!-- Header Menu-->
+<header>
+ <nav id="menu" class="navbar fixed-top bg-dark text-white navbar-expand-xs justify-content-left">   
+    <!-- Controle de Fonte-->
+    <div class="nav-item">            
+      <div class="form-inline" >                          
+        <a data-toggle="modal" data-target="#controles">
+          <img src="img/font-41.svg" class="filter-green ico">            
+          Fonte
+        </a>       
+      </div>     
+    </div>
+    
+    <!-- Busca Letra -->
+    <div class="nav-item" style="padding-left: 1em">
+      <div id="pesqToggle" class="btn btn-dark" data-toggle="modal" data-target="#pesquisa" >        
+        <img src="img/icoPesq.svg" class="filter-green ico">
+        Buscar            
+      </div>
+    </div>
+
+    <!-- Playlist -->
+    <div id="refModal" class ="nav-item btn btn-dark text-white" style="text-decoration:none; cursor:pointer" data-toggle="modal" data-target="#listaModal">
+      <div class="flex-wrap" id="playlistView">
+        <img class="ico filter-green" src ="img/listEdit.svg"/>
+        Playlist
+      </div>
+    </div>
+  </nav>
+
+  <!-- Controles -->
+  <div class="modal fade" id="controles" >
+    <div class="modal-dialog modal-dialog-centered" role="document">         
+      <div class="modal-content border-0 bg-transparent text-white p-3">                      
+          <form class="custom-range text-center" >
+            <h5 >Zoom</h5>
+            <input value="10" id="letraDim" class="custom-range w-75" type="range" min="15" max="50" />              
+            <h5 class="p-1">Colunas</h5>
+            <div class="btn-group" role="group" aria-label="Basic example">
+              <button id=1 type="button" class="columnControl btn btn-secondary">1</button>
+              <button id=2 type="button" class="columnControl btn btn-secondary">2</button>
+            </div>
+            <h5 class="p-1">Alinhamento</h5>
+            <div class="btn-group" role="group" aria-label="Basic example">
+              <button id="left" type="button" class="columnControl btn btn-secondary letraAlign">  
+                <span class="fa fa-align-left">
+              </button>
+              <button id="center" type="button" class="columnControl btn btn-secondary letraAlign">
+                <span class="fa fa-align-center">
+              </button>
+              <button id="right" type="button" class="columnControl btn btn-secondary letraAlign">
+                <span class="fa fa-align-right">
+              </button>
+            </div>
+            <div class="p-2">              
+              <label for='applyAll'>Aplicar em Todas</label> 
+              <input id='applyAll'class="checkbox" type="checkbox">
+            </div>
+              
+          </form>                           
+      </div>
+    </div>
+  </div>
+  
+<!--pesquisa das musicas - toggle by "busca" -->
+  <div class="modal fade" id="pesquisa" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header  bg-dark text-white" data-dismiss="modal">
+          <div class="modal-title" id="exampleModalLabel">    
+            <div class="wrapper">
+              <img src="img/icoPesq.svg" class="filter-green ico">
+              Buscar
+            </div>
+          </div>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <div class="" >
+              <div class="nav-item">
+                <input placeholder="artista" type="search"  class=" busca" id="artista">
+              </div>
+              <div class="nav-item">
+                <input placeholder="musica" type="search"  class="busca" id="musica">
+              </div>                
+            </div>              
+        </div>
+        <div class="bg-dark" style="padding: 0.5em;">              
+          <div class="row ">                
+            <div class="col">
+              <a href = "https://www.vagalume.com.br" target="_blank">
+                <img src="img/rightsVagalume.png"> 
+              </a> 
+            </div>
+            <div class ="col" style="justify-content: flex-end;display: flex;padding-right: 2em;">    
+              <button id = "btnPesq" class="icoPesq btn btn-lg bg-dark btn-outline-light"></button>
+              <button id="btnFavorita" class="btn bg-dark  icoFav btn-lg btn-outline-light"></button>                  
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
