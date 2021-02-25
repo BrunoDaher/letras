@@ -51,11 +51,14 @@ header .divbusca{
   color:white;
 }
 
+.ui-menu{
+  max-height: 56vh;
+  border-radius: 14px;
+  width: 88vw !important;
+}
 
-.ui-autocomplete{
-  max-height: 75% !important;
-    overflow-y: scroll !important;
-    width: 88vw !important;
+.ui-autocomplete{  
+    
 }
 
 

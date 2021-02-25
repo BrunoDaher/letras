@@ -22,6 +22,7 @@ function buscaArtistaDados(_art){
 
   let art = comTraco(_art);
   let url = "https://www.vagalume.com.br/";
+  console.log(url);
   jQuery.getJSON(
     "https://www.vagalume.com.br" + "/" + art.toLowerCase() + "/index.js",
     function (data) {      
@@ -43,7 +44,9 @@ function imagem(url){
 }
 
 function autoCompleteArtista(art) {
-
+ 
+  art = comTraco(art);
+   
   let url = `https://api.vagalume.com.br/search.art?apikey=660a4395f992ff67786584e238f501aa&q=${art}&limit=10`;
 
   
