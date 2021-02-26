@@ -33,14 +33,9 @@ function acoesInputPesquisa(){
   });
 
   $('#artista').on('autocompleteselect', function(e,ui){   
-    
-    let _ui = ui.item.value;    
+        let _ui = ui.item.value;    
     $(this).attr('value',_ui);  
-    
-    
-    //$(this).attr('value',ui.item.label);    
-    //buscaArtistaDados(comTraco(e.currentTarget.value));  
-  });
+   });
 
   $('#musica').on('click', function(e){    
     this.value=''
@@ -59,9 +54,6 @@ function acoesInputPesquisa(){
   });
 
   $('#musica').on('change', function(e,ui){   
-    
-    //$(this).attr('value',e.currentTarget.value);    
-    //console.log("e.currentTarget :" + e.currentTarget.value + "| val(): " + $("#musica").val() + "| ui-> " + ui);
     getMusArt($("#musica").val());
   });
 

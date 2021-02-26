@@ -1,19 +1,14 @@
 function buscaMusicaArtista(chave,div) {
    // buscaArtistaImagem(artista());
-
     let url = "https://api.vagalume.com.br/search.php"
       + "?art=" + encodeURIComponent(artista())
       + "&mus=" + encodeURIComponent(musica());
-
-      console.log(url);
 
    $.getJSON(url, function (data) {     
      let str = data['type']=="exact" ? data.mus[0].text : "nao encontrado";
      data['type']=="exact" ? sessionStorage.setItem('tempLyric'+ chave,str):"";          
      setTimeout(()=>{$("#letra").text(str)},100)
    });
-
-   
 
    return sessionStorage.getItem('tempLyric' + chave);
 }
@@ -48,7 +43,6 @@ function autoCompleteArtista(art) {
   art = comTraco(art);
    
   let url = `https://api.vagalume.com.br/search.art?apikey=660a4395f992ff67786584e238f501aa&q=${art}&limit=10`;
-
   
   $.getJSON(
     url,
@@ -61,8 +55,7 @@ function autoCompleteArtista(art) {
       }
       //view
       $("#artista").autocomplete({
-        //popula o "source" com o array
-        source: bandas
+          source: bandas
       });
     }
   );
@@ -70,7 +63,7 @@ function autoCompleteArtista(art) {
 
 function autoCompleteMusicLocal(){
   $("#musica").autocomplete({
-    source: JSON.parse(sessionStorage.getItem('currentArtLyrics'))
+    source: JSON.parse(localStorage.getItem('currentArtLyrics'))
   });
 }
 

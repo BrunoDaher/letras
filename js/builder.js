@@ -1,61 +1,56 @@
  function headerBuild(){  
-    $.ajax({
-      url: "models/header.html",
-      async:false,
-      context: document.body
-    }).success(function(data) {
-      $('body').prepend(data);
-    });
-      
+
+    //console.log($('body').html());  
+
+      loadLocal('models/header.html','header',listeners);
+    
+      function listeners(){
       //listenters do header
-      const $div = $('#letraDim');
-        //
-      $('#playlistView').click( () => {
-        lista();
-      });
+        const $div = $('#letraDim');
+          //
+        $('#playlistView').click( () => {
+          lista();
+        });
 
-      //toggleView
-      $("#controlToggle").click( function()  {  
-        $("#controles").toggle();
-      });
-      
-      //acao de zoom (header -> principal)
-      $div.on('input change', function() {    
-        zoom($div.val());
-      });
-      
-      //controle de colunas
-      $(".columnControl").click( function() {  
-        var x = $(this).attr('id');
-        $("#letra").css({'column-count':x});      
-      });
+        //toggleView
+        $("#controlToggle").click( function()  {  
+          $("#controles").toggle();
+        });
+        
+        //acao de zoom (header -> principal)
+        $div.on('input change', function() {    
+          zoom($div.val());
+        });
+        
+        //controle de colunas
+        $(".columnControl").click( function() {  
+          var x = $(this).attr('id');
+          $("#letra").css({'column-count':x});      
+        });
 
-       //alinhamento
-       $(".letraAlign").click( function() {  
-        var x = $(this).attr('id');
-        console.log(x);
-        $("#letra").css({'text-align':""+x});      
-      });
+        //alinhamento
+        $(".letraAlign").click( function() {  
+          let x = $(this).attr('id');
+          console.log(x);
+          $("#letra").css({'text-align':""+x});      
+        });
+
+    }
 }
 function footerBuild(){  
-    $.ajax({
-      url: "models/footer.html",      
-      context: document.body
-    }).success(function(data) {
-      $('body').append(data);
-      document.querySelector('#getNotes').addEventListener('click',function(){
-       
-        $("#principal").carousel('next'); 
-        $(this).toggleClass("filter-green");
-      });
-    });
-    
-    //acoes    
+    loadLocal('models/footer.html','footer',listeners);
 
-    
-    $(".navega").click(function() {
-      navigateSet(parseInt($(this).attr("sentido")));
-    });
+    function listeners(){
+       $('#getNotes').click(()=>
+        {
+          $("#principal").carousel('next'); 
+          $(this).toggleClass("filter-green");
+        }
+      )
+      $(".navega").click(function() {
+        navigateSet(parseInt($(this).attr("sentido")));
+      }); 
+    }
 }
 function bodyBuild(){
   playlistBuild(); 
@@ -63,31 +58,34 @@ function bodyBuild(){
 }
 
 function notasBuild(){  
-    $.ajax({
-      url: "models/notas.html",
-      async:false,
-      context: document.body
-    }).success(function(data) {
-      $('#notas').html(data);
-    });
-    //acoes        
+  loadLocal('models/notas.html','#notas','')        
 }
 function playlistBuild(){  
-    $.ajax({
-      url: "models/playlist.html",
-      async:false,
-      context: document.body
-    }).success(function(data) {
-      $('#playlist').html(data);
-    });
+  
+    loadLocal('models/playlist.html','#playlist','')
+    loadLocal('models/listStorage.html',false,saveList)
 
-    $.ajax({
-      url: "models/listStorage.html",
-      async:false,
-      context: document.body
-    }).success(function(data) {
+    function saveList(){
       sessionStorage.setItem('listModel',data);
-    });
-  //acoes      
+    }
+    
 }
 
+function loadLocal(url,target,handler){
+    fetch(url)
+        .then( response =>   {        
+            return response.ok ? response.text() : false; 
+         })
+        .then( function response(responseHtml)
+            { 
+              //console.log(responseHtml)
+              if(target){
+                document.querySelector(target).innerHTML = (responseHtml);  
+              }
+              handler();
+            } )
+        .catch(function (e) {       
+            return 'erro' ;
+            console.log(e);                
+        }); 
+}

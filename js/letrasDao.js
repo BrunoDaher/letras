@@ -26,7 +26,7 @@ function saveMus(){
   }
   
   let fontSize = parseInt($("#letra").css("font-size"));
-  let info = "info";
+  let info = "";
   
   //service
   lista[c] = {'artista': artista(), 'musica': musica() , 'id': id + 1 , 'letra' : letra, 'fonte':fontSize , 'info':info};
@@ -96,7 +96,7 @@ function saveLyrics(data){
   data.forEach(element => {
    arr.push(element.desc);
   });
-  sessionStorage.setItem('currentArtLyrics',JSON.stringify(arr));
+  localStorage.setItem('currentArtLyrics',JSON.stringify(arr));
 }
 
 function delMus(id){

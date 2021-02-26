@@ -2,13 +2,7 @@ function inicioSetList(){
   getJsonById('minhaLista') ? navigateSet(1):"";
   swiper();
   //modal lista de músicas
-  $("#btnFavorita").click(function(){
-    favorita();
-  });    
-
-  
-  $('#getNotes').click(()=>{alert(1)})
-
+  $("#btnFavorita").on('click',favorita);
 }
 
 
@@ -29,17 +23,54 @@ function zoom($value){
     //tern  
     $("#letra").html() != "" ? saveMus():"";
 }
-
+let x = 0;
+let y = 0;
+let xfinal = 0;
+let yfinal = 0;
+let mov = false;
 //principal
 function swiper() {  
-  $("#principal").swiperight( ()=> 
+ /*  $("#principal").swiperight( ()=> 
   { 
     navigateSet(-1);
   });
   $("#principal").swipeleft( ()=> 
   {               
      navigateSet(1);
-  });
+  }); */
+  let div = document.querySelector('#principal');    
+    
+  div.addEventListener('touchstart',swippe,{capture: true});    
+  div.addEventListener('touchend',swippe,{capture: true});   
+  div.addEventListener('scroll',swippe,{capture: true});   
+  
+}
+
+function swippe(e){
+  mov = !mov;
+  let scrollY;
+  console.log(e.type);
+
+    
+      if(e.type == 'touchstart'){                    
+          xfinal=0;            
+          y = e.changedTouches[0].clientY;
+          x = e.changedTouches[0].clientX;
+      }
+      else if(e.type == 'touchend'){
+          yfinal = e.changedTouches[0].clientY;
+          xfinal = e.changedTouches[0].clientX;          
+          let dif  = parseFloat(yfinal) - parseFloat(y);
+          dif = Math.abs(dif);
+          scrollY = (dif < 40?true:false );
+          console.log(scrollY + " -> " + dif)
+
+         // if(scrollY && dif > 120)
+          if(scrollY){
+              navigateSet(x > xfinal ? 1:-1);             
+          }
+      }
+  
 }
 
 

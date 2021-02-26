@@ -3,9 +3,13 @@ $(document).ready(function() {
   headerBuild();      
   bodyBuild();
   footerBuild();
-  
-  modalPesquisaInicio();
-  inicioSetList();
+
+  function start(){
+   modalPesquisaInicio();
+    inicioSetList();
+  }
+
+  setTimeout(start,300);
 
  });
 
