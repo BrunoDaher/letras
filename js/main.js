@@ -7,31 +7,8 @@ $(document).ready(function() {
   modalPesquisaInicio();
   inicioSetList();
 
- 
-
-
-  if(!localStorage.getItem('minhaLista')){
-    //introdução
-    //roda animação    
-    //introduce();    
-  }
  });
 
-function introduce(){
-    //$('#pesqToggle').toggleClass('btn-dark');
-    //$('#pesqToggle').toggleClass('btn-light txt-black');
-    $('#pesqToggle').toggleClass('metro44');     
-    $('#letra').html("<div class='card'><h3>Para pesquisar Use o Menu Acima</h3></div>");     
-    
-    let myGreeting = setTimeout(
-      function() {
-      $('#pesqToggle').removeClass('metro44');                  
-      $('#letra').html('');
-      //$('#pesqToggle').toggleClass('btn-dark');
-      
-      //$('#pesqToggle').toggleClass('btn-light txt-black');       
-    }, 3000) //3s
-  }
 
  function getMusArt(_chave) {
     //let chave = chaveBuild(artista(),musica());

@@ -7,7 +7,7 @@
       $('body').prepend(data);
     });
       
-      //listenters
+      //listenters do header
       const $div = $('#letraDim');
         //
       $('#playlistView').click( () => {

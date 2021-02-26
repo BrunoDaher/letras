@@ -25,14 +25,18 @@ function acoesInputPesquisa(){
 
 
   $('#artista').on('change', function(e,ui){                
-    //$(this).attr('value',e.currentTarget.value);      
-    buscaArtistaDados(comTraco(e.currentTarget.value));
+    //$(this).attr('value',e.currentTarget.value);          
+    setTimeout(()=>  {
+      buscaArtistaDados(comTraco(e.currentTarget.value))
+    }
+    ,200 )
   });
 
   $('#artista').on('autocompleteselect', function(e,ui){   
     
     let _ui = ui.item.value;    
     $(this).attr('value',_ui);  
+    
     
     //$(this).attr('value',ui.item.label);    
     //buscaArtistaDados(comTraco(e.currentTarget.value));  
