@@ -16,26 +16,28 @@ function buscaMusicaArtista(chave,div) {
 function buscaArtistaDados(_art){
 
   let art = comTraco(_art);
-  let url = "https://www.vagalume.com.br/";
-  //console.log(url);
-  jQuery.getJSON(
-    "https://www.vagalume.com.br" + "/" + art.toLowerCase() + "/index.js",
-    function (data) {      
-     // console.log(data);
-      saveLyrics(data.artist.lyrics.item);
-      // Imprime Imagem - Nome do artista
-      //view
-      $("#fundoBanda").css("background-image", "url(" + imagem(url +  data.artist.pic_medium)  + ")");
-    }
-  );
+  let path = 'https://www.vagalume.com.br';
+  let url = `${path}/${art.toLowerCase()}/index.js`;
+
+  loadUrl(url,false,handler);
+
+  function handler(data) { 
+    data = JSON.parse(data);
+   console.log(data.artist.pic_medium)
+    //service     
+    saveLyrics(data.artist.lyrics.item);
+    //$("#imgBanda").css("background-image", "url(" + imagem(path +  data.artist.pic_medium)  + ")");
+    $('#imgBanda').html(imagem(path +  data.artist.pic_medium));
+  }
 
 }
 
 function imagem(url){
   let foto = document.createElement("img");
-  foto.setAttribute("src",url);
-  foto.setAttribute("width","250px");
-  return foto.src;
+     foto.setAttribute("src",url);
+    foto.setAttribute("width","3em");   
+    
+  return foto;
 }
 
 function autoCompleteArtista(art) {

@@ -25,7 +25,8 @@ function acoesInputPesquisa(){
 
 
   $('#artista').on('change', function(e,ui){                
-    //$(this).attr('value',e.currentTarget.value);          
+    //$(this).attr('value',e.currentTarget.value);     
+    $('#musica').val('');    
     setTimeout(()=>  {
       buscaArtistaDados(comTraco(e.currentTarget.value))
     }

@@ -15,9 +15,6 @@ function favorita(){
 }
 
 //header
-
-
-
 let x = 0;
 let y = 0;
 let xfinal = 0;
@@ -31,7 +28,6 @@ function swiper() {
   div.addEventListener('touchstart',swippe,{capture: true});    
   div.addEventListener('touchend',swippe,{capture: true});   
   div.addEventListener('scroll',swippe,{capture: true});   
-  
 }
 
 function swippe(e){
@@ -58,27 +54,22 @@ function swippe(e){
       }
 }
 
-
 function fragListStorage(lista){
   var chave = chaveBuilder(lista.artista,lista.musica);
-
-  var div = sessionStorage.getItem('listModel');
-  
+  var div = sessionStorage.getItem('listModel');  
   div = div.replaceAll("_idMusica",chave);
   div = div.replaceAll("_nomeMusica",lista.musica);
   div = div.replaceAll("_nomeBanda",lista.artista);
-
   return div;
 }
 
-function playlistItem(){
- 
+function playlistItem(){ 
+  
   $(".musPlaylist").click(function(){
     var id = $(this).parent().get(0).id;  
     //navega até a música  
     goMusic(id);
   });
-
 
   $(".delMus").click(function(){      
     var id = $(this).parent().get(0).id;
@@ -95,7 +86,6 @@ function playlistItem(){
          el > ordem ? navigateSet(1) : navigateSet(-1);
        }
     });
-
  }
 
 
@@ -119,7 +109,6 @@ function navigateSet(sentido){
         plota(obj,sent);          
       }
   }
-
 }
 
 //carrossel nativo
@@ -140,14 +129,12 @@ if(sentido=="right"){
 
       $("#letraDim").val(favorita.fonte);
     $("#letra").css("font-size",favorita.fonte);
-
  });
 
   $("#letra").show("slide",{direction:sentido},100);
 
   plotInfoNotes(favorita);
 }
-
 
 function goMusic(chave){
   var l = getJsonById('minhaLista');  

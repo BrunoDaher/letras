@@ -56,8 +56,7 @@ function getAllStorage() {
     $('#listStorage').append(fragListStorage(lista));
   });
 
-  playlistItem();
-  
+  playlistItem();  
 }
 
 function getJsonById(id){
