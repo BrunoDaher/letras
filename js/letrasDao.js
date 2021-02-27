@@ -72,6 +72,22 @@ function isFavorite(chave){
   return bl;
 }
 
+function autoComplete(div,data){
+    //autocomplete
+    $(div).autocomplete({
+     source: data
+    });
+/* 
+    $('#listArt').empty();
+    let lista = "";
+
+      data.forEach(element => {
+         lista = "<div>" + element + "</div>";
+      });
+
+    $('#listArt').append(lista); */
+}
+
  function getMusLocal(chave){
   //service
     let lista = getJsonById('minhaLista');      

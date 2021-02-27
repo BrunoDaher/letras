@@ -5,15 +5,19 @@ $(document).ready(function() {
   footerBuild();
 
   function start(){
-   modalPesquisaInicio();
-    inicioSetList();
+    modalPesquisaInicio();
+      inicioSetList();
   }
-
   setTimeout(start,300);
-
  });
 
-
+ function zoom($value){
+  var f =  $value + "px";    
+    $("#letra").css({'font-size':f});       
+    //tern  
+    $("#letra").html() != "" ? saveMus():"";
+}
+ 
  function getMusArt(_chave) {
     //let chave = chaveBuild(artista(),musica());
 

@@ -2,9 +2,6 @@ img:hover{
   cursor: pointer;
 }
 
-.ui-autocomplete{
-  background-color: white !important;
-}
 
 .imgArtista{
   border-radius: 9px !important;
@@ -33,7 +30,8 @@ body {
 }
 
 header .divbusca{
-  background-color: white; height: 5em;
+  background-color: white; 
+  height: 5em;
   touch-action: none;  
 }
 
@@ -51,6 +49,16 @@ header .divbusca{
   color:white;
 }
 
+datalist{
+  /* display: block; */
+}
+
+.ui-autocomplete{
+  z-index: 1050 !important;
+  text-align: center;
+  width: 49vw !important;
+}
+
 .ui-menu{
   max-height: 56vh;
   border-radius: 14px;
@@ -60,6 +68,11 @@ header .divbusca{
 .ui-autocomplete{  
     
 }
+
+.ui-autocomplete{
+  background-color: white !important;
+}
+
 
 
 footer > div{
@@ -96,11 +109,6 @@ a:hover{
   cursor: pointer;    
   outline: none;
 }
-
-placeholder{
-  color:white;
-}
-
 
 .cab{
   background-color: white;
@@ -233,10 +241,7 @@ a:hover, a:visited{
   margin-left: 0px !important;
 }
 
-.ui-autocomplete{
-  z-index: 1050 !important;
-  text-align: center;
-}
+
 
 #listaModal{
 

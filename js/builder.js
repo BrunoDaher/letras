@@ -2,24 +2,23 @@
 
     //console.log($('body').html());  
 
-      loadLocal('models/header.html','header',listeners);
+      loadUrl('models/header.html','header',listeners);
     
       function listeners(){
       //listenters do header
         const $div = $('#letraDim');
-          //
-        $('#playlistView').click( () => {
-          lista();
-        });
+        
+        //lista
+        $('#playlistView').on('click', lista);
 
         //toggleView
-        $("#controlToggle").click( function()  {  
-          $("#controles").toggle();
-        });
+        $("#controlToggle").on('click',$("#controles").toggle);
+        
         
         //acao de zoom (header -> principal)
-        $div.on('input change', function() {    
-          zoom($div.val());
+        $div.on('input change', () => 
+          { 
+           zoom($div.val());
         });
         
         //controle de colunas
@@ -38,7 +37,7 @@
     }
 }
 function footerBuild(){  
-    loadLocal('models/footer.html','footer',listeners);
+    loadUrl('models/footer.html','footer',listeners);
 
     function listeners(){
        $('#getNotes').click(()=>
@@ -58,20 +57,21 @@ function bodyBuild(){
 }
 
 function notasBuild(){  
-  loadLocal('models/notas.html','#notas','')        
+  loadUrl('models/notas.html','#notas','')        
 }
 function playlistBuild(){  
   
-    loadLocal('models/playlist.html','#playlist','')
-    loadLocal('models/listStorage.html',false,saveList)
+    loadUrl('models/playlist.html','#playlist','')
+    loadUrl('models/listStorage.html',false,saveList)
 
-    function saveList(){
+    function saveList(data){
       sessionStorage.setItem('listModel',data);
     }
     
 }
 
-function loadLocal(url,target,handler){
+//ajax
+function loadUrl(url,target,handler){
     fetch(url)
         .then( response =>   {        
             return response.ok ? response.text() : false; 
@@ -82,7 +82,7 @@ function loadLocal(url,target,handler){
               if(target){
                 document.querySelector(target).innerHTML = (responseHtml);  
               }
-              handler();
+              handler(responseHtml);
             } )
         .catch(function (e) {       
             return 'erro' ;

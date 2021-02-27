@@ -5,8 +5,6 @@ function inicioSetList(){
   $("#btnFavorita").on('click',favorita);
 }
 
-
-
 function favorita(){
     if(artista()=="" || artista()=="" || $("#letra").text() == "" ){    
     }
@@ -17,12 +15,9 @@ function favorita(){
 }
 
 //header
-function zoom($value){
-  var f =  $value + "px";    
-    $("#letra").css({'font-size':f});       
-    //tern  
-    $("#letra").html() != "" ? saveMus():"";
-}
+
+
+
 let x = 0;
 let y = 0;
 let xfinal = 0;
@@ -30,14 +25,7 @@ let yfinal = 0;
 let mov = false;
 //principal
 function swiper() {  
- /*  $("#principal").swiperight( ()=> 
-  { 
-    navigateSet(-1);
-  });
-  $("#principal").swipeleft( ()=> 
-  {               
-     navigateSet(1);
-  }); */
+
   let div = document.querySelector('#principal');    
     
   div.addEventListener('touchstart',swippe,{capture: true});    
@@ -49,9 +37,7 @@ function swiper() {
 function swippe(e){
   mov = !mov;
   let scrollY;
-  console.log(e.type);
-
-    
+  
       if(e.type == 'touchstart'){                    
           xfinal=0;            
           y = e.changedTouches[0].clientY;
@@ -63,14 +49,13 @@ function swippe(e){
           let dif  = parseFloat(yfinal) - parseFloat(y);
           dif = Math.abs(dif);
           scrollY = (dif < 40?true:false );
-          console.log(scrollY + " -> " + dif)
+          
 
          // if(scrollY && dif > 120)
           if(scrollY){
               navigateSet(x > xfinal ? 1:-1);             
           }
       }
-  
 }
 
 
