@@ -29,7 +29,7 @@ body {
 }
 
 #listStorage{
-  max-height: 70vh;
+  max-height: 65vh;
   overflow: scroll;
 }
 
@@ -43,19 +43,40 @@ header .divbusca{
   touch-action: none;  
 }
 
+input{
+  
+}
+
+.albums{
+  position: relative;
+  top: 4em;  
+  padding: 21px;
+  margin: 31px;
+  background-color: #2a2a33;
+  color: white;
+  text-align: center;
+  line-height: 2em;  
+}
+
+
 
 .busca{
   font-family: sans-serif;
   font-size: 1.3em !important;
   line-height: 2.67em;
   text-align: center;
-  border-radius: 0.4em;
+  
   border-color: white;
   vertical-align: middle;
-  width: 100%;width: 100%;
-  background-color:#343a40;
-  color:white;
+  width: 100%;
+  width: 100%;
+  background-color: #343a40;
+  color: white;
+  
+  border-top-right-radius: 0.7em;
+  border-bottom-left-radius: 0.7em;
 }
+
 
 datalist{
   /* display: block; */
@@ -295,6 +316,7 @@ a:hover, a:visited{
   }
     
   .busca{
+    border-bottom-left-radius: 1.3em im !important;
     font-family: sans-serif;
     font-size: 1em;    
     padding: 3px;

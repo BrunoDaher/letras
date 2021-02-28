@@ -67,8 +67,8 @@
 <!--pesquisa das musicas - toggle by "busca" -->
   <div class="modal fade" id="pesquisa" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header  bg-dark text-white" data-dismiss="modal">
+      <div class="modal-content" style="background:none">
+        <div class="modal-header bg-dark text-white" data-dismiss="modal" style="border-top-right-radius: 1.3em;">
           <div class="modal-title" id="exampleModalLabel">    
             <div class="wrapper">
               <img src="img/icoPesq.svg" class="filter-green ico">
@@ -79,7 +79,7 @@
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
-        <div class="modal-body" id='innerModal'>
+        <div class="modal-body" id='innerModal' style="background-color: white;">
             <div class="" >
               <div class="nav-item">
                 <input placeholder="artista" type="search" list='listArt' class=" busca" id="artista">
@@ -92,7 +92,7 @@
         <datalist id='listArt'>
           
         </datalist>
-        <div class="bg-dark" style="padding: 0.5em;">              
+        <div class="bg-dark" style="padding: 0.5em;border-bottom-left-radius: 1.3em;">              
           <div class="row ">                
             <div class="col">
               <a href = "https://www.vagalume.com.br" target="_blank">

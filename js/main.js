@@ -8,7 +8,7 @@ $(document).ready(function() {
     modalPesquisaInicio();
       inicioSetList();
   }
-  setTimeout(start,300);
+  setTimeout(start,250);
  });
 
  function zoom($value){

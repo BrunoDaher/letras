@@ -30,7 +30,7 @@
         //alinhamento
         $(".letraAlign").click( function() {  
           let x = $(this).attr('id');
-          console.log(x);
+          //console.log(x);
           $("#letra").css({'text-align':""+x});      
         });
 
@@ -48,6 +48,20 @@ function footerBuild(){
       )
       $(".navega").click(function() {
         navigateSet(parseInt($(this).attr("sentido")));
+      }); 
+
+      $("#imgBanda").click(function() {
+        let c = $(this).attr('name');
+        let alb = getJsonById('minhaLista')[c].albums;        
+        
+        $('#albums').html('')
+
+        alb.forEach(element => {
+          let sub = document.createElement('div');        
+          sub.innerHTML = element.desc;
+          $('#albums').append(sub);
+        });
+
       }); 
     }
 }

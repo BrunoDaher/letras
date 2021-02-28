@@ -1,5 +1,5 @@
 function inicioSetList(){    
-  getJsonById('minhaLista') ? navigateSet(1):"";
+  //getJsonById('minhaLista') ? navigateSet(1):"";
   swiper();
   //modal lista de músicas
   $("#btnFavorita").on('click',favorita);
@@ -63,7 +63,7 @@ function fragListStorage(lista){
   return div;
 }
 
-function playlistItem(){ 
+function playlistActions(){ 
   
   $(".musPlaylist").click(function(){
     var id = $(this).parent().get(0).id;  
@@ -120,6 +120,12 @@ if(sentido=="right"){
 }
   $("#letra").toggle("slide",{direction:s},200, function() {
       $("#letra").text(favorita.letra);
+      
+      //$('#imgBanda').html(imagem(path +  data.artist.pic_small,comTraco(data.artist.desc)));
+
+      $('#imgBanda').html(imagem(favorita.imagem,favorita.artista));      
+      $('#imgBanda').attr('name',chaveBuilder(favorita.artista,favorita.musica) );
+      
 
       $("#nomeMusica").text(semtraco(favorita.musica));
       $("#musica").val(semtraco(favorita.musica));
@@ -132,7 +138,6 @@ if(sentido=="right"){
  });
 
   $("#letra").show("slide",{direction:sentido},100);
-
   plotInfoNotes(favorita);
 }
 

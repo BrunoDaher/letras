@@ -4,10 +4,11 @@ function buscaMusicaArtista(chave,div) {
       + "?art=" + encodeURIComponent(artista())
       + "&mus=" + encodeURIComponent(musica());
 
-   $.getJSON(url, function (data) {     
+   $.getJSON(url, function (data) {
      let str = data['type']=="exact" ? data.mus[0].text : "nao encontrado";
      data['type']=="exact" ? sessionStorage.setItem('tempLyric'+ chave,str):"";          
-     setTimeout(()=>{$("#letra").text(str)},100)
+     setTimeout(()=>{
+       $("#letra").text(str)},100)
    });
 
    return sessionStorage.getItem('tempLyric' + chave);
@@ -19,26 +20,69 @@ function buscaArtistaDados(_art){
   let path = 'https://www.vagalume.com.br';
   let url = `${path}/${art.toLowerCase()}/index.js`;
 
-  loadUrl(url,false,handler);
-
+  //salva dados
+  loadUrl(url,false,handler);  
   function handler(data) { 
     data = JSON.parse(data);
-   console.log(data.artist.pic_medium)
-    //service     
-    saveLyrics(data.artist.lyrics.item);
-    //$("#imgBanda").css("background-image", "url(" + imagem(path +  data.artist.pic_medium)  + ")");
-    $('#imgBanda').html(imagem(path +  data.artist.pic_medium));
-    $('#nomeBanda').html(_art);
+     // albuns
+     //console.log(data);
+     
+     let albums = [] 
+     data.artist.albums.item.forEach(element => {
+      albums.push({desc:element.desc,url:element.url});
+     });
+
+     // letras
+     let letras = []
+     data.artist.lyrics.item.forEach(element => {
+      letras.push(element.desc);
+     });
+
+    let temp = {
+      img:`${path}/${data.artist.pic_small}`,
+      letras:letras,
+      albums:albums,
+      artista:_art
+    }
+     //guarda informações    
+     
+    saveTemp(temp);
+
+    $('#imgBanda').html(imagem(temp.img,temp.artista));
+    $('#nomeBanda').html(temp.artista);
     $('#nomeMusica').html(''); 
   }
 
+  let discog = `${path}/${art.toLowerCase()}/discografia/`;
+  
+  loadUrl(discog,false,hand2);
+  //discografia
+   
+   function hand2(data){
+      let parser = new DOMParser();
+      let htmlDoc = parser.parseFromString(data, 'text/html');
+      let bd = htmlDoc.body.querySelector('.topLetrasWrapper');      
+      let musicas = []
+      bd.querySelectorAll('.nameMusic').forEach(element => {        
+        musicas.push(element.innerHTML);
+      });          
+    }
+
+
 }
 
-function imagem(url){
+
+
+function htmlToArr(data){
+
+}
+
+function imagem(url,id){
+  //console.log(url)
   let foto = document.createElement("img");
      foto.setAttribute("src",url);
-    foto.setAttribute("width","3em");   
-    
+    foto.setAttribute("width","3em");     
+    foto.id = id;      
   return foto;
 }
 
@@ -49,12 +93,9 @@ function autoCompleteArtista(art) {
   
   loadUrl(url,false,handler);
 
-  function handler(data) { 
-    //service     
-    console.clear()
+  function handler(data) {         
     data = JSON.parse(data).response.docs;
-    let bandas = [];    
-    //console.log(data)
+    let bandas = [];          
     data.forEach(element => {
       bandas.push(element.band);    
     });    
@@ -64,7 +105,8 @@ function autoCompleteArtista(art) {
 }
 
 function autoCompleteMusicLocal(){
-  autoComplete("#musica",JSON.parse(localStorage.getItem('currentArtLyrics'))); 
+  let letras = JSON.parse(sessionStorage.getItem('temp')).letras;
+  autoComplete("#musica",letras); 
 }
 
 function autoCompleteMusica(mus,art) {
