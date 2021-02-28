@@ -25,9 +25,9 @@ function swiper() {
 
   let div = document.querySelector('#principal');    
     
-  div.addEventListener('touchstart',swippe,{capture: true});    
-  div.addEventListener('touchend',swippe,{capture: true});   
-  div.addEventListener('scroll',swippe,{capture: true});   
+  div.addEventListener('touchstart',swippe,{passive: true});    
+  div.addEventListener('touchend',swippe,{passive: true});   
+  div.addEventListener('scroll',swippe,{passive: true});   
 }
 
 function swippe(e){

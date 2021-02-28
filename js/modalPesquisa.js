@@ -32,7 +32,6 @@ function acoesInputPesquisa(){
     }
     ,200 )
    
-   
   });
 
   $('#artista').on('autocompleteselect', function(e,ui){   

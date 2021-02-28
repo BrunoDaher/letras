@@ -43,7 +43,8 @@ function footerBuild(){
        $('#getNotes').click(()=>
         {
           $("#principal").carousel('next'); 
-          $(this).toggleClass("filter-green");
+          $('#getNotes').toggleClass('active')
+          
         }
       )
       $(".navega").click(function() {
@@ -54,7 +55,7 @@ function footerBuild(){
         let c = $(this).attr('name');
         let alb = getJsonById('minhaLista')[c].albums;        
         
-        $('#albums').html('')
+        $('#albums').html('');
 
         alb.forEach(element => {
           let sub = document.createElement('div');        
