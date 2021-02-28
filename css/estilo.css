@@ -64,26 +64,14 @@ datalist{
 .ui-autocomplete{
   z-index: 1050 !important;
   text-align: center;
-  width: 49vw !important;
+  background-color: white !important;
 }
 
 .ui-menu{
   max-height: 56vh;
   border-radius: 14px;
-  width: 88vw !important;
+ 
 }
-
-.ui-autocomplete{  
-    
-}
-
-.ui-autocomplete{
-  background-color: white !important;
-}
-
-
-
-
 
 
 .miniMus{

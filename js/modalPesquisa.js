@@ -31,6 +31,8 @@ function acoesInputPesquisa(){
       buscaArtistaDados(comTraco(e.currentTarget.value))
     }
     ,200 )
+   
+   
   });
 
   $('#artista').on('autocompleteselect', function(e,ui){   

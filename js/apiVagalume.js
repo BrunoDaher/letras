@@ -28,6 +28,8 @@ function buscaArtistaDados(_art){
     saveLyrics(data.artist.lyrics.item);
     //$("#imgBanda").css("background-image", "url(" + imagem(path +  data.artist.pic_medium)  + ")");
     $('#imgBanda').html(imagem(path +  data.artist.pic_medium));
+    $('#nomeBanda').html(_art);
+    $('#nomeMusica').html(''); 
   }
 
 }
@@ -87,7 +89,7 @@ function autoCompleteMusica(mus,art) {
       }
     });    
     
-    autoComplete("#artista",bandas);
+    //autoComplete("#artista",bandas);
   }
    
   
