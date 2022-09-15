@@ -44,7 +44,7 @@ function footerBuild(){
         {
           $("#principal").carousel('next'); 
           $('#getNotes').toggleClass('active')
-          
+          //qualquer coisa
         }
       )
       $(".navega").click(function() {
